@@ -1,0 +1,10 @@
+az login
+az account set --subscription be0b431f-c416-434e-9a06-f3d6efacd86b
+
+rgName='nihooge-rg'
+loc='westeurope'
+
+#echo $grp | jq -r .properties.provisioningState
+
+aksName='nihooge'
+az aks create --resource-group $rgName --name $aksName --location $loc 
