@@ -1,0 +1,11 @@
+az login
+az account set --subscription be0b431f-c416-434e-9a06-f3d6efacd86b
+
+rgName='nihooge-rg'
+loc='westeurope'
+grp=$(az group create --name $rgName --location $loc)
+#echo $grp | jq -r .properties.provisioningState
+
+acrName='nihooge'
+az acr create --resource-group $rgName --name $acrName --sku Basic
+acrId=$(az acr show --name $acrName  --resource-group $rgName --query "id" --output tsv)
